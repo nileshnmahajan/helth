@@ -1,0 +1,114 @@
+{% if set == 0 %}
+<html>
+ <head>  
+        <meta charset="UTF-8">  
+        <title>Health Analisis</title>  
+         {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/> 
+        <link rel="stylesheet" href="{% static 'css/main.css' %}"/> 
+                <link rel="stylesheet" href="{% static 'css/view_index.css' %}"/> 
+		<link rel="stylesheet" href="{% static 'css/graph_view.css' %}"/> 		
+    </head>
+	
+<body>
+{% endif %}
+
+
+<div id="year_load" style="display:none">loading graphs of year 2018</div>
+
+{% if set == 0 %}
+ <script src="{% static 'js/view_index.js' %}"></script> 
+       <div id="header_title">Health Analysis   <div id="option" style="position:fixed">
+select year 
+
+<select id="year">
+<option   value="1">2001</option>
+<option   value="2">2002</option>
+<option  value="3" >2003</option>
+<option value="4"  >2004</option>
+<option value="5"  >2005</option>
+<option  value="6" >2006</option>
+<option  value="7" >2007</option>
+<option  value="8" >2008</option>
+<option  value="9" >2009</option>
+<option  value="10" >2010</option>
+<option  value="11" >2011</option>
+<option  value="12" >2012</option>
+<option  value="13" >2013</option>
+<option  value="14" >2014</option>
+<option value="15"  >2015</option>
+<option value="16"  >2016</option>
+<option  value="17" >2017</option>
+<option  value="18" >2018</option>
+</select>
+
+<button onClick="show_option()" id="search" onclick="show_option()">search</button>
+
+
+</div>
+</div><br>
+
+
+<div id="loading">
+{% endif %}
+<h1><center>Health Analisis of year {{year}}</center></h1>
+
+
+{% for row in data %}
+  
+	   <div id="graph">
+			<div id="title">{{row.0}}</div>
+			<table style="width:100%">
+			<tr style="width:100%"><td style="width:60%"><div id="img"><img height="auto" width="100%" src="../static/{{row.1}}"/></div></td>
+			<td style="width:45%">
+				<table style="width:100%">
+						<tr  id="table1" style="width:100%">
+							{% for th in row.3 %} 
+						
+								<th  style="width:45%">{{th}}</th>
+							{% endfor %}						
+						</tr>
+
+				
+					{% for tr in row.4 %}
+						<tr  id="table1" style="width:100%">
+							{% for td in tr %} 
+						
+								<td  style="width:45%">{{td}}</td>
+							{% endfor %}						
+						</tr>
+					{% endfor %}
+				
+				</table>
+			
+					<div id="desc">{{row.2}}</div>
+			</td>
+			</tr></table>
+		</div>
+{% endfor %}
+	  </div>
+{% if set == 0 %} 	 
+<h4 id="footer">
+	<a href="/administrator/">admin</a>
+	<a href="/hospital/">hospital</a>
+	<a href="/view/">public</a>
+	<a href="/hospital/profile">profile</a>
+</h4>
+
+
+
+
+<script>
+load_finish=0;
+var time=15;
+timer=setInterval(set_timer,1000)
+function set_timer(){document.getElementById("year_load").innerHTML='please wait graph is being generated in '+time+' seconds';time--}
+document.getElementById("year_load").style.display="block";
+get_new_data(2018);
+</script>
+
+
+</body>
+</html>
+
+{% endif %}

@@ -1,0 +1,57 @@
+    <!DOCTYPE html>  
+    <html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>Employee Records</title>  
+        <title>Employee Records</title>  
+         {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+				        <link rel="stylesheet" href="{% static 'css/main.css' %}"/> 
+				        <link rel="stylesheet" href="{% static 'css/add_new_data.css' %}"/>  
+    </head>  
+    <body>  
+	 <span id="header_title"><a href="/administrator/">admin main page</a><a href="/administrator/users" >view users</a>
+<a href="/administrator/disease" >view diseases</a>   	{% if username != 0 %}			<span id="header_button">welcome <a href="/hospital/profile/">{{username}}</a>		<a id="logout_button" href="/hospital/login/?x=1" >logout</a>  </span> {% endif %}</span>
+	<h3>
+
+<center id="header_title" style="background-color:gray;color:white;font-size:28px;margin:0;padding:0;"><h1 >	ALL HOSPITALS USER DETAILS</h1></center>
+<br>
+<center>
+<h2>
+    <table class="table table-striped table-bordered table-sm">  
+        <thead class="thead-dark">  
+        <tr style="background-color:black;color:white;margin:0;font-size:23px;padding:0;">  
+            <th>ID</th>  
+            <th>Login_Id</th>  
+            <th>Email</th>  
+            <th>password</th>
+            <th>Hospital</th>			
+            <th>Actions</th>  
+        </tr>  
+        </thead>  
+		</h2>
+		<h3>
+        <tbody>  
+    {% for Us in User %}  
+        <tr style="background-color:white"  onmouseout="this.style.backgroundColor='white';this.style.color='black'" onmouseover="this.style.backgroundColor='gray';this.style.cursor='pointer';this.style.color='white'">  
+		{% for Us2 in Us %}        
+			<td>{{ Us2}}</td>   			
+		{% endfor %}			
+<td>
+		<a href="/administrator/edit/{{Us.0 }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+               <!-- <a href="/administrator/delete/{{ Us.id }}">Delete</a> --> 
+            </td>  
+        </tr>  
+    {% endfor %}  
+	
+
+        </tbody>  
+		</h3>
+    </table>
+</center>	
+
+    <br>  
+    <br>  
+	    <h4 id="footer"><a href="/administrator/">admin</a><a href="/hospital/">hospital</a><a href="/view/">public</a><a href="/hospital/profile">profile</a></h4>
+    </body>  
+    </html>  

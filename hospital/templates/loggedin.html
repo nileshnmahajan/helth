@@ -1,0 +1,40 @@
+<html>
+ <head>  
+        <meta charset="UTF-8">  
+        <title>HOSPITAL MAIN PAGE</title>  
+         {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/> 
+        <link rel="stylesheet" href="{% static 'css/main.css' %}"/> 		
+    </head>  
+   <body>
+       <h1 id="header_title">hospital main page
+	   </h1><br>
+	<h3>
+	   {% if invalid == 1 %}
+	   <h4 style="color:red">invalid login details</h4>
+	   {%endif%}
+     	   
+   {% if username == 0 %}
+<center>
+          <form method="POST" class="post-form" action="/hospital/login/">  
+			{% csrf_token %}  
+
+			<input type = "text" style = "margin-left:20%;"  placeholder = "Identifiant" name = "username" />
+			<br>
+		  <input type = "password" style = "margin-left:20%;" placeholder = "password" name = "password" />
+   <br>
+  		  <input type="submit" value="login" />
+		  
+	
+				</form></center>
+				
+	{% endif %}
+{% if username != 0 %}	
+   <a href="/hospital/profile/">{{username}}</a><br>
+   <a href="/hospital/login/?x=1"><button>logout</button></a>
+{%endif%}
+<a href="/hospital/signup/">signup</a>
+</h3>
+	    <h4 id="footer"><a href="/administrator/">admin</a><a href="/hospital/">hospital</a><a href="/view/">public</a><a href="/hospital/profile">profile</a></h4><br>
+   </body>
+</html>

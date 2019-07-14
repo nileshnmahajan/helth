@@ -1,0 +1,33 @@
+    <!DOCTYPE html>  
+    <html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>HOSPITAL MAIN PAGE</title>  
+         {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/> 
+        <link rel="stylesheet" href="{% static 'css/main.css' %}"/> 
+		        <link rel="stylesheet" href="{% static 'css/main.css' %}"/> 
+				        <link rel="stylesheet" href="{% static 'css/add_new_data.css' %}"/>  		
+    </head>  
+    <body>  
+    <span id="header_title"><a href="/administrator/">admin main page</a><a href="/administrator/users" >view users</a>
+<a href="/administrator/disease" >view diseases</a>   	{% if User != 0 %}			<span id="header_button">welcome <a href="/hospital/profile/">{{User}}</a>		<a id="logout_button" href="/hospital/login/?x=1" >logout</a>  </span> {% endif %}</span>
+	<h3>
+	
+	{% if username == 0 %}
+		<center id="button"><a href="/hospital/login" class="btn btn-primary">login</a></center>  
+		<center id="button"><a href="/hospital/signup" class="btn btn-primary">signup</a></center>
+	{% endif %}
+	{% if username != 0 %}
+	
+
+		<a id="button" href="/hospital/login/?x=1" class="btn btn-primary">logout</a>
+		<a id="button" href="/administrator/users" class="btn btn-primary">hospitals</a>  
+		<a id="button" href="/administrator/disease" class="btn btn-primary">diseases</a>
+	
+	{% endif %}
+	
+	</h3>
+	    <h4 id="footer"><a href="/administrator/">admin</a><a href="/hospital/">hospital</a><a href="/view/">public</a><a href="/hospital/profile">profile</a></h4>
+	</body>  
+    </html>  

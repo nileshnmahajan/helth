@@ -1,0 +1,32 @@
+    <!DOCTYPE html>  
+    <html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>HOSPITAL MAIN PAGE</title>  
+         {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/> 
+        <link rel="stylesheet" href="{% static 'css/main.css' %}"/> 	
+		
+    </head>  
+    <body>  
+    <span id="header_title"><a href="/hospital/">hospital main page</a><a href="/hospital/view" >view data</a>
+<a href="/hospital/add" >Add data</a>   	{% if username != 0 %}			<span id="header_button">welcome <a href="/hospital/profile/">{{username}}</a>		<a id="logout_button" href="/hospital/login/?x=1" >logout</a>  </span> {% endif %}</span>
+	<h3>
+	
+	{% if username == 0 %}
+		<a id="button" href="/hospital/login" class="btn btn-primary">login</a>  
+		<a id="button" href="/hospital/signup" class="btn btn-primary">signup</a>
+	{% endif %}
+	{% if username != 0 %}
+	
+
+		<a id="button" href="/hospital/login/?x=1" class="btn btn-primary">logout</a>
+		<a id="button" href="/hospital/add" class="btn btn-primary">add new data</a>  
+		<a id="button" href="/hospital/view" class="btn btn-primary">view data</a>
+	
+	{% endif %}
+	
+	</h3>
+	    <h4 id="footer"><a href="/administrator/">admin</a><a href="/hospital/">hospital</a><a href="/view/">public</a><a href="/hospital/profile">profile</a></h4>
+	</body>  
+    </html>  

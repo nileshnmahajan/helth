@@ -1,0 +1,62 @@
+    <!DOCTYPE html>  
+    <html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>Index</title>
+        {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+        <link rel="stylesheet" href="{% static 'css/view_data.css' %}"/>  
+		        <link rel="stylesheet" href="{% static 'css/main.css' %}"/> 
+    </head>  
+    <body>  
+     <span id="header_title"><a href="/hospital/">hospital main page</a>   <a href="/hospital/view" >view data</a>
+<a href="/hospital/add" >Add data</a>	{% if username != 0 %}			<span id="header_button">welcome <a href="/hospital/profile/">{{username}}</a>		<a id="logout_button" href="/hospital/login/?x=1" >logout</a>  </span> {% endif %}</span>
+	<h3>
+	
+   <form method="POST" class="post-form" action="/hospital/view/">  
+	{% csrf_token %}  
+	select year
+ <select name="year" required>
+    {% for year in years %}
+		
+		{% if year == 0 or year == 1 or year == 2 or year == 3 or year == 4 or year == 5 or year == 6 or year == 7 or year == 8 or year == 9 %}
+			<option value="{{year}}">200{{year}}</option>
+		{% else %}
+			<option value="{{year}}">20{{year}}</option>
+		{% endif %}
+	{% endfor %}
+  </select>
+	select month
+  <select name="month" required>
+    {% for month in months %}
+		<option value="{{month}}">{{month}}</option>
+	{% endfor %}
+  </select>
+	<input type="submit"/>
+	</form>
+	
+	{% if show == 1 %}
+	<br>
+	 <h1>{{selected}}</h1>
+	<h3>
+	<table>
+	<tr style="background-color:black;color:gold">
+		<td>disease</td>
+		<td>male</td>
+		<td>female</td>
+	</tr>
+	{% for row in data %} 
+		<tr id="month_data_row">
+		<td>{{row.0}}</td>
+		<td>{{row.1}}</td>
+		<td>{{row.2}}</td>
+		</tr>
+	{% endfor %}	
+		</table>
+	{% endif %}
+	</table>
+	</h3>
+	
+	 <h4 id="footer"><a href="/administrator/">admin</a><a href="/hospital/">hospital</a><a href="/view/">public</a><a href="/hospital/profile">profile</a></h4>
+	</body>  
+    </html>  

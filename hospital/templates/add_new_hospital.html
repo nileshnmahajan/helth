@@ -1,0 +1,50 @@
+    <!DOCTYPE html>  
+    <html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>Index</title>  
+        {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+		        <link rel="stylesheet" href="{% static 'css/main.css' %}"/> 
+				        <link rel="stylesheet" href="{% static 'css/add_new_data.css' %}"/>  
+    </head>  
+    <body>  
+     <span id="header_title"><a href="/hospital/" >hospital main page</a> <a href="/hospital/view" >view data</a>
+<a href="/hospital/add" >Add data</a>  	{% if username != 0 %}			<span id="header_button">welcome <a href="/hospital/profile/">{{username}}</a>		<a id="logout_button" href="/hospital/login/?x=1" >logout</a>  </span> {% endif %}</span>
+	<h3>
+	{{selected}}<span id="help">?</span><span id="view_help" style="display:none">{{help}}</span>
+   {% if hospital != 0 %}
+   <center> <h1><span id="login_word">STEP 2 :  Add Hospital details</span></h1></center>
+<center>  <form method="POST" class="post-form" action="/hospital/add_hospital/">  
+	{% csrf_token %}
+		<table>
+
+
+			<tr id="month_data_row">
+				<td>Hospital Name : </td>
+				<td><input type="text" name="h_name" placeholder="hospital name" /></td>
+			</tr>
+			<tr id="month_data_row">
+				<td>Hospital Address : </td>	
+				<td><input type="text" name="h_location"  placeholder="hospital address" /></td>
+
+				</tr>
+			<tr>
+				<td></td>
+				<td ><button type="submit" id="new_data_submit_button" />Signup</button></td>
+			</tr>
+	</table>
+	</form>
+	</center> 
+	
+	{% endif %}
+	{% if error != 0 %}
+		same hospital present
+	{% endif %}
+	
+	</h3>
+	
+	 <h4 id="footer"><a href="/administrator/">admin</a><a href="/hospital/">hospital</a><a href="/view/">public</a><a href="/hospital/profile">profile</a></h4>
+	         <script src="{% static 'js/add_new_data.js' %}"></script>  
+	</body>  
+    </html>  

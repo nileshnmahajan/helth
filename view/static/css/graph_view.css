@@ -1,0 +1,60 @@
+#graph{
+  width: 90%;
+  display: block;
+
+ background-color: white;
+  margin:auto;
+ margin-top:25px; 
+}
+#title
+{
+  font-size: 25px;
+  background-color: efa;
+  text-align: center;
+}
+#desc{
+  font-size: 20px;
+  word-break:  break-all;
+}
+
+#footer{
+  clear:both;
+}
+#option{
+  font-size: 18px;
+  right:0;
+  display: inline;
+  height:50px;
+}
+#header_title{
+  
+  position: fixed;
+  display: block;
+  width: 100%;
+}
+#year{
+  border:solid red 1px;
+  font-size: 22px;
+  background-color: eef;
+}
+#search{
+  
+  border:solid black 1px;
+  background-color: eef;
+  color:black;
+  font-size: 22px;
+  padding:0px 7px 0px 7px;
+  
+}
+#table1{
+  background-color:  beige;
+  text-align:center;  
+}
+
+th{
+  background-color: gray;
+  color:white;
+}
+#loading{
+  margin-top:20px;
+}

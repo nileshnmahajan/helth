@@ -1,0 +1,15 @@
+#year_load{
+  border: solid 1px red;
+  color:black;
+  font-size: 25px;
+  position: fixed;
+  z-index: 10;
+  background-color: #eee;
+  padding:1%  5% 1% 5%;
+  top:50%;
+  left:33%;
+  border-radius: 5px; 
+}
+#loading{
+  margin-top:20px;
+}

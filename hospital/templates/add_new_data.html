@@ -1,0 +1,52 @@
+    <!DOCTYPE html>  
+    <html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>Index</title>  
+        {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+		        <link rel="stylesheet" href="{% static 'css/main.css' %}"/> 
+				        <link rel="stylesheet" href="{% static 'css/add_new_data.css' %}"/>  
+    </head>  
+    <body>  
+     <span id="header_title">
+	 
+	 <a href="/hospital/" >hospital main page</a>
+<a href="/hospital/view" >view data</a>
+<a href="/hospital/add" >Add data</a>
+	 {% if username != 0 %}			<span id="header_button">welcome <a href="/hospital/profile/">{{username}}</a>		<a id="logout_button" href="/hospital/login/?x=1" >logout</a>  </span> {% endif %}</span>
+	<h3>
+	{{selected}}<span id="help">?</span><span id="view_help" style="display:none">{{help}}</span>
+   {% if disease != 0 %}
+   <form method="POST" class="post-form" action="/hospital/add/">  
+	{% csrf_token %}
+		<table>
+			<tr>
+			<th>disease</th>
+			<th>male</th>
+			<th>female</th>
+		</tr>
+    {% for row in disease %}
+			<tr id="month_data_row">
+				<td>{{row.1}}</td>
+				<td><input type="text" name="m{{row.0}}" placeholder="male" /></td>
+				<td><input type="text" name="f{{row.0}}"  placeholder="female" /></td>
+			</tr>
+	{% endfor %}
+			<tr>
+				<td></td>
+				<td></td>
+				<td ><button type="submit" id="new_data_submit_button" />Submit</button></td>
+			</tr>
+	</table>
+
+	</form>
+	{% endif %}
+	
+	
+	</h3>
+	
+	 <h4 id="footer"><a href="/administrator/">admin</a><a href="/hospital/">hospital</a><a href="/view/">public</a><a href="/hospital/profile">profile</a></h4>
+	         <script src="{% static 'js/add_new_data.js' %}"></script>  
+	</body>  
+    </html>  

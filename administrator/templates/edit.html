@@ -1,0 +1,37 @@
+    <!DOCTYPE html>  
+    <html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>Index</title>  
+        {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+				        <link rel="stylesheet" href="{% static 'css/main.css' %}"/> 
+				        <link rel="stylesheet" href="{% static 'css/add_new_data.css' %}"/>  
+    </head>  
+    <body>
+<span id="header_title"><a href="/administrator/">admin main page</a><a href="/administrator/users" >view users</a>
+<a href="/administrator/disease" >view diseases</a>   	{% if username != 0 %}			<span id="header_button">welcome <a href="/hospital/profile/">{{username}}</a>		<a id="logout_button" href="/hospital/login/?x=1" >logout</a>  </span> {% endif %}</span>
+	<h3>
+	
+    <form method="POST" class="post-form" action="/administrator/update/{{User.id}}">  
+            {% csrf_token %}  
+        <h3>Update Details</h3>  	   
+        <label class="col-sm-2 col-form-label">Users Name:</label>  
+            <input type="text" name="username" id="id_ename" required maxlength="100" value="{{ User.username}}" />  
+        <label class="col-sm-2 col-form-label">User Email:</label>  
+            <input type="email" name="email" id="id_eemail" required maxlength="254" value="{{ User.email }}" />  
+        <label class="col-sm-2 col-form-label">User Password:</label>  
+            <input type="text" name="password" id="id_econtact" required maxlength="15" value="{{ User.password }}" />  
+        <button type="submit" class="btn btn-success">Update</button>  
+    </form>
+		{% if user == 1 %}
+<span id="login_error" >username present</span>
+{% endif %}
+{% if user_same == 1 %}
+<span id="login_error" ></span>
+
+
+{% endif %}
+	    <h4 id="footer"><a href="/administrator/">admin</a><a href="/hospital/">hospital</a><a href="/view/">public</a><a href="/hospital/profile">profile</a></h4>
+    </body>  
+    </html>  
